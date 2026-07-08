@@ -12,17 +12,14 @@ const trains = [
   { id: '12259', name: 'Sealdah Duronto', status: 'On Time', platform: 2, delay: 0 },
 ];
 
-// ✅ Root route
 app.get('/', (req, res) => {
-  res.send('✅ Train Tracker Backend is running!');
+  res.send('Train Tracker Backend is running');
 });
 
-// ✅ All trains
 app.get('/api/trains', (req, res) => {
   res.json(trains);
 });
 
-// ✅ Single train (FIXED)
 app.get('/api/train/:id', (req, res) => {
   const train = trains.find(t => t.id === req.params.id);
   if (train) {
@@ -32,7 +29,6 @@ app.get('/api/train/:id', (req, res) => {
   }
 });
 
-// ✅ PNR Check
 app.post('/api/pnr', (req, res) => {
   const { pnr } = req.body;
   res.json({
@@ -45,4 +41,7 @@ app.post('/api/pnr', (req, res) => {
   });
 });
 
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
